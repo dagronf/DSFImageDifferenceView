@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		233E259E22A88708006B5A33 /* DSFImageExtensions+conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233E259D22A88708006B5A33 /* DSFImageExtensions+conversion.swift */; };
+		233E25A222A890C8006B5A33 /* DSFImageDifferenceView.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 233E25A122A890C8006B5A33 /* DSFImageDifferenceView.podspec */; };
 		238B8D4222A5D9480037254C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B8D4122A5D9480037254C /* AppDelegate.swift */; };
 		238B8D4422A5D9490037254C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 238B8D4322A5D9490037254C /* Assets.xcassets */; };
 		238B8D4722A5D9490037254C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238B8D4522A5D9490037254C /* MainMenu.xib */; };
+		238B8D5122A5D9720037254C /* DSFImageDifferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B8D5022A5D9720037254C /* DSFImageDifferenceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		238B8D3E22A5D9480037254C /* DSFImageDifferenceView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSFImageDifferenceView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		233E259D22A88708006B5A33 /* DSFImageExtensions+conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFImageExtensions+conversion.swift"; sourceTree = "<group>"; };
+		233E259F22A890B4006B5A33 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		233E25A022A890C1006B5A33 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		233E25A122A890C8006B5A33 /* DSFImageDifferenceView.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DSFImageDifferenceView.podspec; sourceTree = "<group>"; };
+		238B8D3E22A5D9480037254C /* DSFImageDifferenceView Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DSFImageDifferenceView Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		238B8D4122A5D9480037254C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		238B8D4322A5D9490037254C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		238B8D4622A5D9490037254C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		238B8D4822A5D9490037254C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		238B8D4922A5D9490037254C /* DSFImageDifferenceView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFImageDifferenceView.entitlements; sourceTree = "<group>"; };
+		238B8D5022A5D9720037254C /* DSFImageDifferenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSFImageDifferenceView.swift; sourceTree = "<group>"; };
+		238B8D5222A5D98F0037254C /* DSFImageDifferenceView Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DSFImageDifferenceView Demo.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +43,11 @@
 		238B8D3522A5D9480037254C = {
 			isa = PBXGroup;
 			children = (
-				238B8D4022A5D9480037254C /* DSFImageDifferenceView */,
+				233E25A022A890C1006B5A33 /* LICENSE */,
+				233E259F22A890B4006B5A33 /* README.md */,
+				233E25A122A890C8006B5A33 /* DSFImageDifferenceView.podspec */,
+				238B8D4F22A5D9690037254C /* DSFImageDifferenceView */,
+				238B8D4022A5D9480037254C /* DSFImageDifferenceView Demo */,
 				238B8D3F22A5D9480037254C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,19 +55,28 @@
 		238B8D3F22A5D9480037254C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				238B8D3E22A5D9480037254C /* DSFImageDifferenceView.app */,
+				238B8D3E22A5D9480037254C /* DSFImageDifferenceView Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		238B8D4022A5D9480037254C /* DSFImageDifferenceView */ = {
+		238B8D4022A5D9480037254C /* DSFImageDifferenceView Demo */ = {
 			isa = PBXGroup;
 			children = (
+				238B8D5222A5D98F0037254C /* DSFImageDifferenceView Demo.entitlements */,
 				238B8D4122A5D9480037254C /* AppDelegate.swift */,
 				238B8D4322A5D9490037254C /* Assets.xcassets */,
 				238B8D4522A5D9490037254C /* MainMenu.xib */,
 				238B8D4822A5D9490037254C /* Info.plist */,
-				238B8D4922A5D9490037254C /* DSFImageDifferenceView.entitlements */,
+				233E259D22A88708006B5A33 /* DSFImageExtensions+conversion.swift */,
+			);
+			path = "DSFImageDifferenceView Demo";
+			sourceTree = "<group>";
+		};
+		238B8D4F22A5D9690037254C /* DSFImageDifferenceView */ = {
+			isa = PBXGroup;
+			children = (
+				238B8D5022A5D9720037254C /* DSFImageDifferenceView.swift */,
 			);
 			path = DSFImageDifferenceView;
 			sourceTree = "<group>";
@@ -63,9 +84,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		238B8D3D22A5D9480037254C /* DSFImageDifferenceView */ = {
+		238B8D3D22A5D9480037254C /* DSFImageDifferenceView Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 238B8D4C22A5D9490037254C /* Build configuration list for PBXNativeTarget "DSFImageDifferenceView" */;
+			buildConfigurationList = 238B8D4C22A5D9490037254C /* Build configuration list for PBXNativeTarget "DSFImageDifferenceView Demo" */;
 			buildPhases = (
 				238B8D3A22A5D9480037254C /* Sources */,
 				238B8D3B22A5D9480037254C /* Frameworks */,
@@ -75,9 +96,9 @@
 			);
 			dependencies = (
 			);
-			name = DSFImageDifferenceView;
+			name = "DSFImageDifferenceView Demo";
 			productName = DSFImageDifferenceView;
-			productReference = 238B8D3E22A5D9480037254C /* DSFImageDifferenceView.app */;
+			productReference = 238B8D3E22A5D9480037254C /* DSFImageDifferenceView Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -92,6 +113,11 @@
 				TargetAttributes = {
 					238B8D3D22A5D9480037254C = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -108,7 +134,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				238B8D3D22A5D9480037254C /* DSFImageDifferenceView */,
+				238B8D3D22A5D9480037254C /* DSFImageDifferenceView Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -118,6 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				233E25A222A890C8006B5A33 /* DSFImageDifferenceView.podspec in Resources */,
 				238B8D4422A5D9490037254C /* Assets.xcassets in Resources */,
 				238B8D4722A5D9490037254C /* MainMenu.xib in Resources */,
 			);
@@ -130,7 +157,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				233E259E22A88708006B5A33 /* DSFImageExtensions+conversion.swift in Sources */,
 				238B8D4222A5D9480037254C /* AppDelegate.swift in Sources */,
+				238B8D5122A5D9720037254C /* DSFImageDifferenceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,11 +296,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DSFImageDifferenceView/DSFImageDifferenceView.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3L6RK3LGGW;
-				INFOPLIST_FILE = DSFImageDifferenceView/Info.plist;
+				INFOPLIST_FILE = "DSFImageDifferenceView Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -286,11 +314,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DSFImageDifferenceView/DSFImageDifferenceView.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 3L6RK3LGGW;
-				INFOPLIST_FILE = DSFImageDifferenceView/Info.plist;
+				INFOPLIST_FILE = "DSFImageDifferenceView Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -313,7 +340,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		238B8D4C22A5D9490037254C /* Build configuration list for PBXNativeTarget "DSFImageDifferenceView" */ = {
+		238B8D4C22A5D9490037254C /* Build configuration list for PBXNativeTarget "DSFImageDifferenceView Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				238B8D4D22A5D9490037254C /* Debug */,
