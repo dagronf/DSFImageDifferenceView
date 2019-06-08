@@ -30,13 +30,9 @@ import Cocoa
 		didSet {
 			self.leftLayer.image.contents = self.leftImage
 			self.leftLayer.image.contentsGravity = .resizeAspect
+			self.leftImageSize = self.leftImage?.size ?? .zero
 			self.reposition()
 		}
-	}
-
-	/// The size of the left image, or .zero if nil
-	@objc var leftImageSize: CGSize {
-		return self.leftImage?.size ?? .zero
 	}
 
 	/// The image being displayed on the right
@@ -44,13 +40,9 @@ import Cocoa
 		didSet {
 			self.rightLayer.image.contents = self.rightImage
 			self.rightLayer.image.contentsGravity = .resizeAspect
+			self.rightImageSize = self.rightImage?.size ?? .zero
 			self.reposition()
 		}
-	}
-
-	/// The size of the right image, or .zero if nil
-	@objc var rightImageSize: CGSize {
-		return self.rightImage?.size ?? .zero
 	}
 
 	/// The position of the separator within the view (0.0 -> 1.0)
@@ -60,25 +52,22 @@ import Cocoa
 		}
 	}
 
+	/// The actual size of the left image, or .zero if nil
+	@objc private(set) var leftImageSize: CGSize = .zero
+
+	/// The visible rect for the left image
+	@objc private(set) var leftVisibleRect: CGRect = .zero
+
+	/// The actual size of the right image, or .zero if nil
+	@objc private(set) var rightImageSize: CGSize = .zero
+
+	/// The visible rect for the right image
+	@objc private(set) var rightVisibleRect: CGRect = .zero
+
 	/// The position within the frame for the combined images
 	@objc private(set) var imagesExtentRect: CGRect = .zero
 
-	/// The visible rect for the left image
-	@objc private(set) var leftRect: CGRect = .zero
-
-	/// The visible rect for the right image
-	@objc private(set) var rightRect: CGRect = .zero
-
 	// MARK: Private accessors
-
-	private class LayerMaskCombo {
-		let image = CALayer()
-		let mask = CALayer()
-		init() {
-			self.image.mask = self.mask
-			self.mask.backgroundColor = CGColor.black
-		}
-	}
 
 	private var animLayer: SeparatorAnimationLayer?
 
@@ -185,20 +174,20 @@ extension DSFImageDifferenceView {
 
 	private func updateMaskFrames(dividerPos: CGFloat) {
 		let divided = self.bounds.divided(atDistance: dividerPos, from: .minXEdge)
-		self.leftRect = divided.slice
-		self.rightRect = divided.remainder
+		self.leftVisibleRect = divided.slice
+		self.rightVisibleRect = divided.remainder
 	}
 
 	private func reposition() {
 		CATransaction.withDisabledActions {
 			var leftImageRect: CGRect = .zero
-			if let leftImage = self.leftImage {
-				leftImageRect = CGRect(origin: .zero, size: leftImage.size)
+			if leftImageSize != .zero {
+				leftImageRect = CGRect(origin: .zero, size: leftImageSize)
 				leftImageRect = leftImageRect.scaleAspectFit(maxRect: self.bounds)
 			}
 			var rightImageRect: CGRect = .zero
-			if let rightImage = self.rightImage {
-				rightImageRect = CGRect(origin: .zero, size: rightImage.size)
+			if rightImageSize != .zero {
+				rightImageRect = CGRect(origin: .zero, size: rightImageSize)
 				rightImageRect = rightImageRect.scaleAspectFit(maxRect: self.bounds)
 			}
 			else {
@@ -209,24 +198,23 @@ extension DSFImageDifferenceView {
 
 			self.checkerboardLayer.mask.frame = self.imagesExtentRect
 
-			var dividerPos = extent.width * separatorPos // + extent.origin.x
+			var dividerPos = extent.width * separatorPos
 			if extent.width < self.bounds.width {
 				dividerPos += extent.origin.x
 			}
 
 			let divided = self.bounds.divided(atDistance: dividerPos, from: .minXEdge)
-			self.leftRect = divided.slice
-			self.rightRect = divided.remainder
+			self.leftVisibleRect = divided.slice
+			self.rightVisibleRect = divided.remainder
 
-			self.leftLayer.mask.frame = self.leftRect
-			self.rightLayer.mask.frame = self.rightRect
+			self.leftLayer.mask.frame = self.leftVisibleRect
+			self.rightLayer.mask.frame = self.rightVisibleRect
 
 			let sepRect = CGRect(x: dividerPos - 1.5, y: self.imagesExtentRect.minY, width: 3, height: self.imagesExtentRect.height)
 			separatorLayer.frame = sepRect
-			let sepPath = CGPath(rect: CGRect(x: 1,
-			                                  y: self.imagesExtentRect.minY + 4,
-			                                  width: 1,
-			                                  height: self.imagesExtentRect.height - 8), transform: nil)
+
+			let pathRect = CGRect(x: 1, y: 4, width: 1, height: sepRect.height - 8)
+			let sepPath = CGPath(rect: pathRect, transform: nil)
 			separatorLayer.path = sepPath
 			separatorLayer.fillColor = NSColor.systemGray.cgColor
 		}
@@ -361,13 +349,23 @@ extension DSFImageDifferenceView {
 	}
 }
 
+private extension DSFImageDifferenceView {
+	class LayerMaskCombo {
+		let image = CALayer()
+		let mask = CALayer()
+		init() {
+			self.image.mask = self.mask
+			self.mask.backgroundColor = CGColor.black
+		}
+	}
+}
+
 // MARK: - Extensions
 
 private extension CGImage {
 	/// The size of the CGImage
 	var size: CGSize {
-		let rep = NSBitmapImageRep(cgImage: self)
-		return rep.size
+		return CGSize(width: self.width, height: self.height)
 	}
 }
 
@@ -422,8 +420,8 @@ private extension NSImage {
 }
 
 private extension CGSize {
-	func isInSomeWayLargerThan(_ rect: CGSize) -> Bool {
-		return self.height > rect.height || self.width > rect.width
+	func isInSomeWayLargerThan(_ size: CGSize) -> Bool {
+		return self.height > size.height || self.width > size.width
 	}
 }
 
