@@ -2,6 +2,11 @@
 
 A NSView class to interactively display the differences between two images
 
+<p align="center">
+    <img src="https://img.shields.io/github/v/tag/dagronf/DSFImageDifferenceView" />
+    <img src="https://img.shields.io/badge/macOS-10.10+-red" />
+</p>
+
 ## Features
 
 * Single import file.  Swift and Objective-C support.
@@ -13,6 +18,10 @@ A NSView class to interactively display the differences between two images
 
 ### Direct
 Add `DSFImageDifferenceView.swift` to your project
+
+### Swift Package Manager
+
+Just reference `https://github.com/dagronf/DSFImageDifferenceView` from your project
 
 ### Cocoapods
 Add

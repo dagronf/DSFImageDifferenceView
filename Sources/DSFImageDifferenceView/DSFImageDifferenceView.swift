@@ -69,7 +69,7 @@ import Cocoa
 
 	// MARK: Private accessors
 
-	private var animLayer: SeparatorAnimationLayer?
+	private var animLayer: ArbitraryAnimationLayer?
 
 	private let leftLayer = LayerMaskCombo()
 	private let rightLayer = LayerMaskCombo()
@@ -163,7 +163,7 @@ extension DSFImageDifferenceView {
 						ofSize: newSize,
 						color1: NSColor.quaternaryLabelColor,
 						color2: NSColor.tertiaryLabelColor
-					)
+				)
 				lastCheckerBoardSize = newSize
 			}
 			self.leftLayer.image.frame = self.bounds
@@ -278,62 +278,77 @@ extension DSFImageDifferenceView {
 	}
 
 	override func moveLeft(_: Any?) {
-		self.separatorPos = max(0, self.separatorPos - stepSize())
+		self.separatorPos = max(0, self.separatorPos - self.stepSize())
 	}
 
 	override func moveRight(_: Any?) {
-		self.separatorPos = min(1, self.separatorPos + stepSize())
+		self.separatorPos = min(1, self.separatorPos + self.stepSize())
+	}
+}
+
+private extension DSFImageDifferenceView {
+	class LayerMaskCombo {
+		let image = CALayer()
+		let mask = CALayer()
+		init() {
+			self.image.mask = self.mask
+			self.mask.backgroundColor = CGColor.black
+		}
 	}
 }
 
 // MARK: - Animation
 
-/// A simple layer class to expose an animation progress for a CAAnimation.
-private class SeparatorAnimationLayer: CALayer {
-	override init() {
-		super.init()
-	}
-
-	var progressCallback: ((CGFloat) -> Void)?
-
-	override init(layer: Any) {
-		super.init(layer: layer)
-		let newL = layer as! SeparatorAnimationLayer
-		self.progress = newL.progress
-		self.progressCallback = newL.progressCallback
-	}
-
-	required init?(coder _: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
-	@objc dynamic var progress: CGFloat = 0 {
-		didSet {
-			progressCallback?(progress)
-		}
-	}
-
-	override static func needsDisplay(forKey key: String) -> Bool {
-		if key == "progress" {
-			return true
-		}
-		return super.needsDisplay(forKey: key)
-	}
-}
-
 extension DSFImageDifferenceView {
+	/// A simple layer class to expose an animation progress for a CAAnimation.
+	private class ArbitraryAnimationLayer: CALayer {
+		static let KeyPath: String = "progress"
+
+		override init() {
+			super.init()
+		}
+
+		var progressCallback: ((CGFloat) -> Void)?
+
+		override init(layer: Any) {
+			super.init(layer: layer)
+			guard let newL = layer as? ArbitraryAnimationLayer else {
+				fatalError()
+			}
+			self.progress = newL.progress
+			self.progressCallback = newL.progressCallback
+		}
+
+		required init?(coder _: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
+
+		@objc dynamic var progress: CGFloat = 0 {
+			didSet {
+				progressCallback?(progress)
+			}
+		}
+
+		override static func needsDisplay(forKey key: String) -> Bool {
+			if key == ArbitraryAnimationLayer.KeyPath {
+				return true
+			}
+			return super.needsDisplay(forKey: key)
+		}
+	}
+
 	@objc func animateIn() {
 		if let alayer = self.animLayer {
 			alayer.removeFromSuperlayer()
 			self.animLayer = nil
 		}
 
-		let alayer = SeparatorAnimationLayer()
+		let alayer = ArbitraryAnimationLayer()
 		self.animLayer = alayer
 		self.layer?.addSublayer(alayer)
 
 		alayer.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
-		let keyframes = CAKeyframeAnimation(keyPath: "progress")
+		let keyframes = CAKeyframeAnimation(keyPath: ArbitraryAnimationLayer.KeyPath)
 		keyframes.values = [0, 1, 0, 0.5]
 		keyframes.keyTimes = [0, 0.33, 0.66, 1]
 		keyframes.duration = 1.8
@@ -346,17 +361,6 @@ extension DSFImageDifferenceView {
 			self?.separatorPos = progress
 		}
 		alayer.add(keyframes, forKey: "SlideIn")
-	}
-}
-
-private extension DSFImageDifferenceView {
-	class LayerMaskCombo {
-		let image = CALayer()
-		let mask = CALayer()
-		init() {
-			self.image.mask = self.mask
-			self.mask.backgroundColor = CGColor.black
-		}
 	}
 }
 

@@ -8,25 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		233E259E22A88708006B5A33 /* DSFImageExtensions+conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233E259D22A88708006B5A33 /* DSFImageExtensions+conversion.swift */; };
-		233E25A222A890C8006B5A33 /* DSFImageDifferenceView.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 233E25A122A890C8006B5A33 /* DSFImageDifferenceView.podspec */; };
 		238B8D4222A5D9480037254C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B8D4122A5D9480037254C /* AppDelegate.swift */; };
 		238B8D4422A5D9490037254C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 238B8D4322A5D9490037254C /* Assets.xcassets */; };
 		238B8D4722A5D9490037254C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 238B8D4522A5D9490037254C /* MainMenu.xib */; };
-		238B8D5122A5D9720037254C /* DSFImageDifferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238B8D5022A5D9720037254C /* DSFImageDifferenceView.swift */; };
+		239AEA8D24C03C4C0097EFB7 /* DSFImageDifferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AEA8C24C03C4C0097EFB7 /* DSFImageDifferenceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		233E259D22A88708006B5A33 /* DSFImageExtensions+conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFImageExtensions+conversion.swift"; sourceTree = "<group>"; };
-		233E259F22A890B4006B5A33 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		233E25A022A890C1006B5A33 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		233E25A122A890C8006B5A33 /* DSFImageDifferenceView.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DSFImageDifferenceView.podspec; sourceTree = "<group>"; };
 		238B8D3E22A5D9480037254C /* DSFImageDifferenceView Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DSFImageDifferenceView Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		238B8D4122A5D9480037254C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		238B8D4322A5D9490037254C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		238B8D4622A5D9490037254C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		238B8D4822A5D9490037254C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		238B8D5022A5D9720037254C /* DSFImageDifferenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSFImageDifferenceView.swift; sourceTree = "<group>"; };
 		238B8D5222A5D98F0037254C /* DSFImageDifferenceView Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DSFImageDifferenceView Demo.entitlements"; sourceTree = "<group>"; };
+		239AEA8C24C03C4C0097EFB7 /* DSFImageDifferenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DSFImageDifferenceView.swift; path = ../../Sources/DSFImageDifferenceView/DSFImageDifferenceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,10 +39,6 @@
 		238B8D3522A5D9480037254C = {
 			isa = PBXGroup;
 			children = (
-				233E25A022A890C1006B5A33 /* LICENSE */,
-				233E259F22A890B4006B5A33 /* README.md */,
-				233E25A122A890C8006B5A33 /* DSFImageDifferenceView.podspec */,
-				238B8D4F22A5D9690037254C /* DSFImageDifferenceView */,
 				238B8D4022A5D9480037254C /* DSFImageDifferenceView Demo */,
 				238B8D3F22A5D9480037254C /* Products */,
 			);
@@ -65,20 +57,13 @@
 			children = (
 				238B8D5222A5D98F0037254C /* DSFImageDifferenceView Demo.entitlements */,
 				238B8D4122A5D9480037254C /* AppDelegate.swift */,
+				239AEA8C24C03C4C0097EFB7 /* DSFImageDifferenceView.swift */,
 				238B8D4322A5D9490037254C /* Assets.xcassets */,
 				238B8D4522A5D9490037254C /* MainMenu.xib */,
 				238B8D4822A5D9490037254C /* Info.plist */,
 				233E259D22A88708006B5A33 /* DSFImageExtensions+conversion.swift */,
 			);
 			path = "DSFImageDifferenceView Demo";
-			sourceTree = "<group>";
-		};
-		238B8D4F22A5D9690037254C /* DSFImageDifferenceView */ = {
-			isa = PBXGroup;
-			children = (
-				238B8D5022A5D9720037254C /* DSFImageDifferenceView.swift */,
-			);
-			path = DSFImageDifferenceView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +129,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				233E25A222A890C8006B5A33 /* DSFImageDifferenceView.podspec in Resources */,
 				238B8D4422A5D9490037254C /* Assets.xcassets in Resources */,
 				238B8D4722A5D9490037254C /* MainMenu.xib in Resources */,
 			);
@@ -158,8 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				233E259E22A88708006B5A33 /* DSFImageExtensions+conversion.swift in Sources */,
+				239AEA8D24C03C4C0097EFB7 /* DSFImageDifferenceView.swift in Sources */,
 				238B8D4222A5D9480037254C /* AppDelegate.swift in Sources */,
-				238B8D5122A5D9720037254C /* DSFImageDifferenceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +288,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFImageDifferenceView;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFImageDifferenceView.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -322,7 +307,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFImageDifferenceView;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFImageDifferenceView.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
