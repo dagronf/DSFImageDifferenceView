@@ -22,11 +22,11 @@
 
 import Cocoa
 
-@objc class DSFImageDifferenceView: NSView {
+@objc public class DSFImageDifferenceView: NSView {
 	// MARK: Public accessors
 
 	/// The image being displayed on the left
-	@objc var leftImage: CGImage? {
+	@objc public var leftImage: CGImage? {
 		didSet {
 			self.leftLayer.image.contents = self.leftImage
 			self.leftLayer.image.contentsGravity = .resizeAspect
@@ -36,7 +36,7 @@ import Cocoa
 	}
 
 	/// The image being displayed on the right
-	@objc var rightImage: CGImage? {
+	@objc public var rightImage: CGImage? {
 		didSet {
 			self.rightLayer.image.contents = self.rightImage
 			self.rightLayer.image.contentsGravity = .resizeAspect
@@ -89,7 +89,7 @@ import Cocoa
 		super.init(coder: decoder)
 	}
 
-	override func awakeFromNib() {
+	public override func awakeFromNib() {
 		super.awakeFromNib()
 		self.setup()
 	}
@@ -150,7 +150,7 @@ extension DSFImageDifferenceView {
 // MARK: - Update and layout
 
 extension DSFImageDifferenceView {
-	override func layout() {
+	public override func layout() {
 		super.layout()
 
 		CATransaction.withDisabledActions {
@@ -224,7 +224,7 @@ extension DSFImageDifferenceView {
 // MARK: - Mouse handling
 
 extension DSFImageDifferenceView {
-	override func mouseDown(with theEvent: NSEvent) {
+	public override func mouseDown(with theEvent: NSEvent) {
 		if let anim = self.animLayer {
 			anim.removeAllAnimations()
 			self.animLayer = nil
@@ -232,7 +232,7 @@ extension DSFImageDifferenceView {
 		self.updateSlider(event: theEvent)
 	}
 
-	override func mouseDragged(with event: NSEvent) {
+	public override func mouseDragged(with event: NSEvent) {
 		self.updateSlider(event: event)
 	}
 
@@ -250,19 +250,19 @@ extension DSFImageDifferenceView {
 // MARK: - Key handling
 
 extension DSFImageDifferenceView {
-	override var acceptsFirstResponder: Bool {
+	public override var acceptsFirstResponder: Bool {
 		return true
 	}
 
-	override func drawFocusRingMask() {
+	public override func drawFocusRingMask() {
 		self.bounds.fill()
 	}
 
-	override var focusRingMaskBounds: NSRect {
+	public override var focusRingMaskBounds: NSRect {
 		return self.bounds
 	}
 
-	override func keyDown(with event: NSEvent) {
+	public override func keyDown(with event: NSEvent) {
 		if event.modifierFlags.contains(.numericPad) {
 			self.interpretKeyEvents([event])
 		}
@@ -277,11 +277,11 @@ extension DSFImageDifferenceView {
 		return 0.01
 	}
 
-	override func moveLeft(_: Any?) {
+	public override func moveLeft(_: Any?) {
 		self.separatorPos = max(0, self.separatorPos - self.stepSize())
 	}
 
-	override func moveRight(_: Any?) {
+	public override func moveRight(_: Any?) {
 		self.separatorPos = min(1, self.separatorPos + self.stepSize())
 	}
 }
